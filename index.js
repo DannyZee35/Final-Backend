@@ -13,6 +13,12 @@ const app = express();
 app.use(fileUpload({
     useTempFiles: true
 }))
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://master--gorgeous-centaur-9b4db8.netlify.app');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+  
 app.use(cors());
 
 app.use(bodyParser.json({ limit: '50mb' }));
